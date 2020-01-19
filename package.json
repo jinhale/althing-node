@@ -1,0 +1,26 @@
+{
+  "name": "althing-node",
+  "version": "1.0.0",
+  "description": "A website to coordinate civics without coercive authority",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinhale/althing-node.git"
+  },
+  "keywords": [
+    "civics"
+  ],
+  "author": "Justin Leon Hale",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jinhale/althing-node/issues"
+  },
+  "homepage": "https://github.com/jinhale/althing-node#readme"
+}
