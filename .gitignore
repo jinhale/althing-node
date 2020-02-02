@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Google Calendar
+Google-Calendar/*
+token.json
+resources/credentials.json
+
+# Google Cloud
+app.yaml
