@@ -110,3 +110,6 @@ resources/credentials.json
 
 # Google Cloud
 app.yaml
+
+# Emacs
+*~
