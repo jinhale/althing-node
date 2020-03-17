@@ -10,7 +10,7 @@ app.set('view engine', 'jsx');
 
 app.engine('jsx', require('express-react-views').createEngine());
 	
-app.use('/assets', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
   initGoogleCalendar(googleEvents => {
