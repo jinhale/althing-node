@@ -113,3 +113,6 @@ app.yaml
 
 # Emacs
 *~
+
+*.css
+*.css.map
