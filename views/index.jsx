@@ -2,8 +2,6 @@ const React = require('react');
 const DefaultLayout = require('./layouts/default');
 
 function getGoogleEventDate(event) {
-  console.log('event: ', event);
-  console.log(event.start.dateTime || event.start.date);
   return new Date(event.start.dateTime || event.start.date);
 }
 
@@ -23,7 +21,6 @@ function Calendar({events, days, }) {
   for (let i = 1; i < events.length; i++) {
     if (!testIsSameDay(events[i], events[i - 1])) {
       const date = getGoogleEventDate(events[i]);
-      console.log('date');
       listings[j++] = <h1 key={String(j)}>{date.toDateString()}</h1>;
     }
 
@@ -34,7 +31,30 @@ function Calendar({events, days, }) {
 }
 
 function Event({ googleEvent, }) {
-  return <div className="event">{googleEvent.description}</div>;
+  if (!googleEvent || !googleEvent.summary) {
+    return null;
+  }
+  return (
+    <li className="event">
+      <a href={googleEvent.htmlLink} >{googleEvent.summary}</a>
+    </li>);
+}
+
+function getDateTitle(previousEvent, currentEvent) {
+  const currentEventDate = getGoogleEventDate(currentEvent);
+
+  if (previousEvent) {
+    const previousEventDate = getGoogleEventDate(previousEvent);
+    if (previousEventDate.getDay() === currentEventDate.getDay()) {
+      if (previousEventDate.getMonth() === currentEventDate.getMonth()) {
+	if (previousEventDate.getFullYear() === currentEventDate.getFullYear()) {
+	  return null;
+	}
+      }
+    }
+  }
+
+  return <h2 className="date-title">{`${currentEventDate.toLocaleDateString()}`}</h2>;
 }
 
 function Home({ googleEvents, }) {
@@ -44,9 +64,16 @@ function Home({ googleEvents, }) {
 	Calendar of Events
       </h1>
 
-      {googleEvents.map((googleEvent, key) => {
-        return <Event key={String(key)} googleEvent={googleEvent} />;
-    })}
+      <ul id="events-list">
+	{googleEvents.map((googleEvent, key, allEvents) => {
+          const dateTitle = getDateTitle(key > 0 ? allEvents[key - 1] : null, googleEvent);
+	  return (
+	    <div>
+              {dateTitle}
+              <Event key={String(key)} googleEvent={googleEvent} />
+            </div>);
+	})}
+      </ul>
     </DefaultLayout>);
 }
 
