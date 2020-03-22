@@ -1,6 +1,60 @@
+// pink theme
+$dark-gray: #404040;
+$pink-theme: pink;
+$pink-complement-green: #cbffc0;
+$pink-complement-blue: #c0d6ff;
+$pink-complement-yellow: #ffdac0;
+
+// gray theme
+$dark-slate-gray-theme: #2f4f4f;
+$dark-slate-gray-complement-brown: #4f2f2f;
+$dark-slate-gray-complement-dark-green: #4f4f2f;
+$dark-slate-gray-complement-dark-blue: #2f2f4f;
+$light-slate-gray: #778899;
+$light-slate-gray-complement: #4a6580;
+$faint-slate-gray: #ddeeff;
+$faint-slate-gray-complement: #bad5f0; 
+$faint-gray: #cfcfcf;
+
+html {
+    font-size: 1em;
+    background-color: $light-slate-gray;
+}
+
+body {
+    width: 100%;
+    margin: 0 auto;
+    background-color: $faint-slate-gray;
+}
+
+.container {
+    border-radius: .5em;
+}
+
+.event {
+    margin: 1em auto;
+    list-style: none;
+    padding: .5em;
+    background-color: $dark-slate-gray-complement-dark-blue;
+    .date-title {
+	position: relative;
+	left: -1em;
+    }
+    a {
+	color: $faint-gray;
+	text-decoration: none;
+    }
+}
+
 @media only screen and (min-width: 600px) {
     .event { 
-	width: 66%; 
+	width: 66em;
+    }
+    
+    body {
+	max-width: 72em;
+	padding: .5em 3em 1em;
+	border: 1px solid gray;
     }
 }
 
